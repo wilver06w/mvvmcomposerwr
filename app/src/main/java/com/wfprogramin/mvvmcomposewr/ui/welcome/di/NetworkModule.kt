@@ -1,27 +1,24 @@
-package com.wfprogramin.mvvmcomposewr.ui.welcome.core
+package com.wfprogramin.mvvmcomposewr.ui.welcome.di
 
 import com.wfprogramin.mvvmcomposewr.ui.welcome.data.network.QuoteApiClient
-import com.wfprogramin.mvvmcomposewr.ui.welcome.data.values.Const
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import javax.inject.Singleton
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
-@InstallIn
-object NetworkModule {
+@InstallIn(SingletonComponent::class)
+object NetworkModule{
+
     @Singleton
     @Provides
-    fun providerRetrofit(): Retrofit {
-
-        return Retrofit.Builder()
-            .baseUrl(Const.BASE_URL)
-            .addConverterFactory(
-                GsonConverterFactory
-                    .create()
-            )
+    fun providerRetrofit(): Retrofit
+    {
+        return Retrofit.Builder().baseUrl("https://drawsomething-59328-default-rtdb.europe-west1.firebasedatabase.app/")
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 

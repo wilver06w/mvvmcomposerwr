@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.wfprogramin.mvvmcomposewr.ui.login.ui.LoginScreen
 import com.wfprogramin.mvvmcomposewr.ui.login.ui.LoginViewModel
 import com.wfprogramin.mvvmcomposewr.ui.theme.MvvmcomposewrTheme
+import com.wfprogramin.mvvmcomposewr.ui.welcome.ui.view.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+//                    WelcomeScreen()
                     LoginScreen(LoginViewModel())
                 }
             }

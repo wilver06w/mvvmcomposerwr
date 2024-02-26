@@ -1,9 +1,9 @@
-package com.wfprogramin.mvvmcomposewr.ui.welcome.core
+package com.wfprogramin.mvvmcomposewr.ui.welcome.di
 
-import android.content.Context
 import androidx.room.Room
 import com.wfprogramin.mvvmcomposewr.ui.welcome.data.database.QuoteDatabase
-import com.wfprogramin.mvvmcomposewr.ui.welcome.data.values.Const
+
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,12 +15,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RoomModule {
 
-    @Singleton
-    @Provides
-    fun provideRoom(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, QuoteDatabase::class.java, Const.QUOTE_DATABASE_NAME).build()
+    const val QUOTE_DATABASE_NAME = "quote_database"
 
     @Singleton
     @Provides
-    fun provideQuoteDao(db:QuoteDatabase) = db.getQuoteDao()
+    fun provideRoom(@ApplicationContext context: Context) = Room.databaseBuilder(context, QuoteDatabase::class.java, QUOTE_DATABASE_NAME).build()
+
+
+    @Singleton
+    @Provides
+    fun provideQuoteDao(db: QuoteDatabase) = db.getQuoteDao()
 }
